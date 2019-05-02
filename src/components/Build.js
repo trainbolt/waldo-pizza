@@ -19,7 +19,8 @@ class Build extends React.Component {
 
 	defaultState = {
 		selectedSize: this.defaultSize,
-		selectedToppings: this.defaultSelectedToppings
+		selectedToppings: this.defaultSelectedToppings,
+		maxToppings: this.props.pizzasBySize[this.defaultSize].maxToppings
 	};
 
 	constructor(props) {
@@ -44,7 +45,8 @@ class Build extends React.Component {
 
 			this.setState({
 				selectedSize: size,
-				selectedToppings
+				selectedToppings,
+				maxToppings: this.props.pizzasBySize[size].maxToppings
 			});
 		}
 	};
@@ -155,6 +157,9 @@ class Build extends React.Component {
 											<Form.Label style={{ display: 'block' }}>Size</Form.Label>
 											<Row>
 												{ toppingsBySize[selectedSize].map((t, index) => {
+
+													const isChecked = selectedToppings.indexOf(t.topping) > -1;
+													const isDisabled = !isChecked && selectedToppings.length === this.state.maxToppings;
 													// left for logging
 													return (
 														<Col lg={3} md={4} sm={6} xs={6} key={index}>
@@ -169,7 +174,8 @@ class Build extends React.Component {
 														</span>
 																}
 																onChange={() => this.onChangeTopping(t.topping)}
-																checked={ selectedToppings.indexOf(t.topping) > -1 }
+																checked={ isChecked }
+																disabled={ isDisabled }
 																type="checkbox"
 																style={{ marginBottom: 20 }}
 															/>
