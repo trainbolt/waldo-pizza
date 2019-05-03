@@ -1,43 +1,44 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "react-bootstrap/Button";
 
 class Home extends React.Component {
-	render() {
-		const pizzaGif = this.props.giphy.randomPizzaGif;
-		const bg = pizzaGif ? pizzaGif.images.original.url : null;
+  render() {
+    const pizzaGif = this.props.giphy.randomPizzaGif;
+    const bg = pizzaGif ? pizzaGif.images.original.url : null;
 
-		return (
-			<div>
-				<CartMessage>
-					Buy 2 Get 1 Free Starts Sunday!
-				</CartMessage>
-				<Container style={{ background: "black" }}>
-					<Background style={{ backgroundImage: `url(${bg})` }} />
-					<Hero>
-						<JumboHeading>Waldo Pizza!</JumboHeading>
-						<JumboSubheading>Go ahead... you know you want one.</JumboSubheading>
-						<Link to="/build"style={{ textDecoration: 'none' }}>
-							<Button variant="primary" style={{ maxWidth: 400, margin: "0 auto", display: 'block' }}>
-								Build Your Pie
-							</Button>
-						</Link>
-					</Hero>
-				</Container>
-				<Container>
-					<Section style={{ padding: "50px 0" }}>
-						something...
-					</Section>
-				</Container>
-			</div>
-		)
-	}
+    return (
+      <div>
+        <CartMessage>Buy 2 Get 1 Free Starts Sunday!</CartMessage>
+        <Container style={{ background: "black" }}>
+          <Background style={{ backgroundImage: `url(${bg})` }} />
+          <Hero>
+            <JumboHeading>Waldo Pizza!</JumboHeading>
+            <JumboSubheading>
+              Go ahead... you know you want one.
+            </JumboSubheading>
+            <Link to="/build" style={{ textDecoration: "none" }}>
+              <Button
+                variant="primary"
+                style={{ maxWidth: 400, margin: "0 auto", display: "block" }}
+              >
+                Build Your Pie
+              </Button>
+            </Link>
+          </Hero>
+        </Container>
+        <Container>
+          <Section style={{ padding: "50px 0" }}>something...</Section>
+        </Container>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = ({ giphy }) => {
-	return { giphy };
+  return { giphy };
 };
 
 export default connect(mapStateToProps)(Home);

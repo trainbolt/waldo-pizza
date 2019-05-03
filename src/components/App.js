@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
 import { getRandomPizzaGif } from "../actions/giphy";
@@ -9,25 +9,27 @@ import Home from "./Home";
 import Build from "./Build";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getRandomPizzaGif();
+  }
 
-	componentDidMount() {
-		this.props.getRandomPizzaGif();
-	}
-
-	render() {
-		return (
-			<Switch>
-				<Route path="/" exact component={Home} />
-				<Route path="/build" component={Build} />
-			</Switch>
-		);
-	}
+  render() {
+    return (
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/build" component={Build} />
+      </Switch>
+    );
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-	return {
-		getRandomPizzaGif: () => dispatch(getRandomPizzaGif())
-	};
+  return {
+    getRandomPizzaGif: () => dispatch(getRandomPizzaGif())
+  };
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
