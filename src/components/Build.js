@@ -65,7 +65,7 @@ class Build extends React.Component {
 					state.selectedToppings.concat(topping)
 					:
 					state.selectedToppings.filter((item) => topping !== item)
-					;
+				;
 
 				// Other things like price update go in here
 
@@ -154,7 +154,7 @@ class Build extends React.Component {
 
 									<Form.Row>
 										<Form.Group as={Col}>
-											<Form.Label style={{ display: 'block' }}>Size</Form.Label>
+											<Form.Label style={{ display: 'block' }}>Toppings <small>{ selectedToppings.length } of { this.state.maxToppings }</small></Form.Label>
 											<Row>
 												{ toppingsBySize[selectedSize].map((t, index) => {
 
@@ -272,8 +272,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-		addToCart: pizza => dispatch(addToCart(pizza)),
-		removeFromCart: id => dispatch(removeFromCart(id))
+	addToCart: pizza => dispatch(addToCart(pizza)),
+	removeFromCart: id => dispatch(removeFromCart(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Build);
