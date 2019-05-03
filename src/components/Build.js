@@ -46,7 +46,7 @@ class Build extends React.Component {
 			this.setState({
 				selectedSize: size,
 				selectedToppings,
-				maxToppings: this.props.pizzasBySize[size].maxToppings
+				maxToppings: this.props.pizzasBySize[size].maxToppings || this.props.pizzasBySize[size].toppings.length
 			});
 		}
 	};
