@@ -20,3 +20,9 @@ export default function(state = initialState, action) {
       return state;
   }
 }
+
+/*
+
+ - Later the cart should include discounts and totals
+
+ */

@@ -445,3 +445,15 @@ const HR = styled.hr`
   display: block;
   clear: both;
 `;
+
+/*
+
+ - I've included some styled componenets here for example only. In a larger project if styled components were going to be used I would setup a central theme where repeated properties or groups of properties would be defined to reduce code in component views and increase the ease of theming
+
+ - This Build.js file should be broken up into multiple components (functional and pure components) as well as some js functions pulled to a central utility functions file
+
+ - Variables defined for the defaultState were a bit of an afterthought and would most likely be provided from a settings file or defaultState be made to include all of the setup for clarity
+
+ - As the app is further developed certain functions and functionality would be updated to be more robust. One such function would be the 'getCartTotal' function which would undoubtably be added as a cart action which would be dispatched when adding/removing from cart as well as other later funcitons like entering promo codes etc.
+
+ */

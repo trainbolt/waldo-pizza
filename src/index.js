@@ -70,6 +70,10 @@ client
       composeWithDevTools(applyMiddleware(reduxThunk))
     );
 
+    someAsyncCall().then(function(response) {
+      store.dispatch(someActionCreator(response));
+    });
+
     render(
       <ApolloProvider client={client}>
         <Provider store={store}>
@@ -84,3 +88,9 @@ client
   .catch(error => console.error("ERROR: ", error));
 
 render(<div>Show Loading Screen ...</div>, document.getElementById("root"));
+
+/*
+ - There are obvious other ways to load data... in this example we show a load screen while initialState is being hydrated
+ - Moving forward from the prototype I would instead include a LOADING_DATA action handler which would allow us to show a loading screen without the use of different render calls above
+ - Also, we could dispatch the LOADING_DATA action prior to the async query above, which would then dispatch a DATA_LOADED type of action when the promise is resolved
+ */
